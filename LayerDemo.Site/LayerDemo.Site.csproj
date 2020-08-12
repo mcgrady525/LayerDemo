@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LayerDemo.Common\LayerDemo.Common.csproj" />
+    <ProjectReference Include="..\LayerDemo.Dao\LayerDemo.Dao.csproj" />
+    <ProjectReference Include="..\LayerDemo.Entity\LayerDemo.Entity.csproj" />
+    <ProjectReference Include="..\LayerDemo.IDao\LayerDemo.IDao.csproj" />
+    <ProjectReference Include="..\LayerDemo.IService\LayerDemo.IService.csproj" />
+    <ProjectReference Include="..\LayerDemo.Service\LayerDemo.Service.csproj" />
+  </ItemGroup>
+
+</Project>

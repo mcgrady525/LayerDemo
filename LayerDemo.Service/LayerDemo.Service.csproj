@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LayerDemo.Adapter\LayerDemo.Adapter.csproj" />
+    <ProjectReference Include="..\LayerDemo.Common\LayerDemo.Common.csproj" />
+    <ProjectReference Include="..\LayerDemo.Entity\LayerDemo.Entity.csproj" />
+    <ProjectReference Include="..\LayerDemo.IDao\LayerDemo.IDao.csproj" />
+    <ProjectReference Include="..\LayerDemo.IService\LayerDemo.IService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SSharing.Frameworks.NetCore.Common">
+      <HintPath>..\DLL\SSharing.Frameworks.NetCore.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
