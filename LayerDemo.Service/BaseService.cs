@@ -11,11 +11,11 @@ using LayerDemo.IDao;
 
 namespace LayerDemo.Service
 {
-    public class BaseService<TDOEntity> : IBaseService<TDOEntity> where TDOEntity : class
+    public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {
-        protected readonly IBaseDao<TDOEntity> _dao;
+        protected readonly IBaseDao<TEntity> _dao;
 
-        public BaseService(IBaseDao<TDOEntity> dao)
+        public BaseService(IBaseDao<TEntity> dao)
         {
             _dao = dao;
         }
@@ -25,7 +25,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Add(TDOEntity entity)
+        public bool Add(TEntity entity)
         {
             return _dao.Add(entity);
         }
@@ -35,7 +35,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> AddAsync(TDOEntity entity)
+        public async Task<bool> AddAsync(TEntity entity)
         {
             return await _dao.AddAsync(entity);
         }
@@ -45,7 +45,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public bool Add(IList<TDOEntity> entities)
+        public bool Add(IList<TEntity> entities)
         {
             return _dao.Add(entities);
         }
@@ -55,7 +55,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Update(TDOEntity entity)
+        public bool Update(TEntity entity)
         {
             return _dao.Update(entity);
         }
@@ -65,7 +65,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync(TDOEntity entity)
+        public async Task<bool> UpdateAsync(TEntity entity)
         {
             return await _dao.UpdateAsync(entity);
         }
@@ -75,7 +75,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Remove(TDOEntity entity)
+        public bool Remove(TEntity entity)
         {
             return _dao.Remove(entity);
         }
@@ -85,7 +85,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        public TDOEntity Get(params object[] keys)
+        public TEntity Get(params object[] keys)
         {
             return _dao.Get(keys);
         }
@@ -95,7 +95,7 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        public async Task<TDOEntity> GetAsync(params object[] keys)
+        public async Task<TEntity> GetAsync(params object[] keys)
         {
             return await _dao.GetAsync(keys);
         }

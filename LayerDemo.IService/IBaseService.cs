@@ -6,62 +6,62 @@ using System.Threading.Tasks;
 
 namespace LayerDemo.IService
 {
-    public interface IBaseService<TDOEntity> where TDOEntity : class
+    public interface IBaseService<TEntity> where TEntity : class
     {
         /// <summary>
         /// 新增
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Add(TDOEntity entity);
+        bool Add(TEntity entity);
 
         /// <summary>
         /// 新增(异步)
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<bool> AddAsync(TDOEntity entity);
+        Task<bool> AddAsync(TEntity entity);
 
         /// <summary>
         /// 批量新增
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        bool Add(IList<TDOEntity> entities);
+        bool Add(IList<TEntity> entities);
 
         /// <summary>
         /// 更新
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Update(TDOEntity entity);
+        bool Update(TEntity entity);
 
         /// <summary>
         /// 更新(异步)
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        Task<bool> UpdateAsync(TDOEntity entity);
+        Task<bool> UpdateAsync(TEntity entity);
 
         /// <summary>
         /// 删除
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        bool Remove(TDOEntity entity);
+        bool Remove(TEntity entity);
 
         /// <summary>
         /// 查询（按主键）
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        TDOEntity Get(params object[] keys);
+        TEntity Get(params object[] keys);
 
         /// <summary>
         /// 查询（按主键）
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        Task<TDOEntity> GetAsync(params object[] keys);
+        Task<TEntity> GetAsync(params object[] keys);
     }
 }
