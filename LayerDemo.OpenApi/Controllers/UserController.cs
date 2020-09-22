@@ -7,7 +7,6 @@ using LayerDemo.IService.User;
 using Microsoft.AspNetCore.Mvc;
 using SSharing.Frameworks.NetCore.Common.Results;
 using SSharing.Frameworks.NetCore.Common.Consts;
-using LayerDemo.Entity.BO;
 using SSharing.Frameworks.NetCore.Common.Extends;
 
 namespace LayerDemo.OpenApi.Controllers

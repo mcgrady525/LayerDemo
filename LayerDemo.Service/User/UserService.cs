@@ -1,5 +1,4 @@
-﻿using LayerDemo.Entity.BO;
-using LayerDemo.Entity.DO;
+﻿using LayerDemo.Entity.DO;
 using LayerDemo.IDao.User;
 using LayerDemo.IService.User;
 using System;
@@ -13,13 +12,13 @@ using LayerDemo.Common.Expressions;
 
 namespace LayerDemo.Service.User
 {
-    public class UserService : BaseService<Entity.BO.User, TUser>, IUserService
+    public class UserService : BaseService<TUser>, IUserService
     {
         public UserService(IUserDao userDao) : base(userDao) { }
 
-        public IList<Entity.BO.User> GetUsers(GetUsersRequest request)
+        public IList<Entity.DO.TUser> GetUsers(GetUsersRequest request)
         {
-            IList<Entity.BO.User> result = new List<Entity.BO.User>();
+            //IList<Entity.BO.User> result = new List<Entity.BO.User>();
 
             var query = PredicateBuilder.True<TUser>();
             if (!request.UserId.IsNullOrEmpty())
@@ -35,13 +34,7 @@ namespace LayerDemo.Service.User
                 query = query.And(p => p.IsEnabled == request.IsEnabled);
             }
 
-            var users= ((IUserDao)_dao).Get(query);
-            if (users.HasValue())
-            {
-                result= users.Select(p => p.ToDto<Entity.BO.User>()).ToList();
-            }
-
-            return result;
+            return ((IUserDao)_dao).Get(query);
         }
     }
 }

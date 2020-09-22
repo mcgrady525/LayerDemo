@@ -11,9 +11,7 @@ using LayerDemo.IDao;
 
 namespace LayerDemo.Service
 {
-    public class BaseService<TBOEntity, TDOEntity> : IBaseService<TBOEntity>
-                                                        where TBOEntity : class
-                                                        where TDOEntity : class
+    public class BaseService<TDOEntity> : IBaseService<TDOEntity> where TDOEntity : class
     {
         protected readonly IBaseDao<TDOEntity> _dao;
 
@@ -27,10 +25,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Add(TBOEntity entity)
+        public bool Add(TDOEntity entity)
         {
-            var item = entity.ToDto<TDOEntity>();
-            return _dao.Add(item);
+            return _dao.Add(entity);
         }
 
         /// <summary>
@@ -38,10 +35,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> AddAsync(TBOEntity entity)
+        public async Task<bool> AddAsync(TDOEntity entity)
         {
-            var item = entity.ToDto<TDOEntity>();
-            return await _dao.AddAsync(item);
+            return await _dao.AddAsync(entity);
         }
 
         /// <summary>
@@ -49,10 +45,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public bool Add(IList<TBOEntity> entities)
+        public bool Add(IList<TDOEntity> entities)
         {
-            var items = entities.Select(p => p.ToDto<TDOEntity>()).ToList();
-            return _dao.Add(items);
+            return _dao.Add(entities);
         }
 
         /// <summary>
@@ -60,10 +55,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Update(TBOEntity entity)
+        public bool Update(TDOEntity entity)
         {
-            var item = entity.ToDto<TDOEntity>();
-            return _dao.Update(item);
+            return _dao.Update(entity);
         }
 
         /// <summary>
@@ -71,10 +65,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync(TBOEntity entity)
+        public async Task<bool> UpdateAsync(TDOEntity entity)
         {
-            var item = entity.ToDto<TDOEntity>();
-            return await _dao.UpdateAsync(item);
+            return await _dao.UpdateAsync(entity);
         }
 
         /// <summary>
@@ -82,10 +75,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public bool Remove(TBOEntity entity)
+        public bool Remove(TDOEntity entity)
         {
-            var item = entity.ToDto<TDOEntity>();
-            return _dao.Remove(item);
+            return _dao.Remove(entity);
         }
 
         /// <summary>
@@ -93,17 +85,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        public TBOEntity Get(params object[] keys)
+        public TDOEntity Get(params object[] keys)
         {
-            TBOEntity result = null;
-
-            var item = _dao.Get(keys);
-            if (item != null)
-            {
-                result = item.ToDto<TBOEntity>();
-            }
-
-            return result;
+            return _dao.Get(keys);
         }
 
         /// <summary>
@@ -111,17 +95,9 @@ namespace LayerDemo.Service
         /// </summary>
         /// <param name="keys"></param>
         /// <returns></returns>
-        public async Task<TBOEntity> GetAsync(params object[] keys)
+        public async Task<TDOEntity> GetAsync(params object[] keys)
         {
-            TBOEntity result = null;
-
-            var item = await _dao.GetAsync(keys);
-            if (item != null)
-            {
-                result = item.ToDto<TBOEntity>();
-            }
-
-            return result;
+            return await _dao.GetAsync(keys);
         }
     }
 }
